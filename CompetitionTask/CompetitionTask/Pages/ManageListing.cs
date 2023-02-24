@@ -1,10 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CompetitionTask.Pages
 {
@@ -14,7 +8,7 @@ namespace CompetitionTask.Pages
         {
             IWebElement viewButton = driver.FindElement(By.XPath("//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[last()]/td[8]/div/button[1]/i"));
             viewButton.Click();
-            IWebElement title = driver.FindElement(By.XPath("//*[@id=\"service-detail-section\"]/div[2]/div/div[2]/div[1]/div[1]/div[2]/h1/span"));
+            IWebElement title = driver.FindElement(By.XPath("//div[@class='active section']"));
             String value = "I am providing service to learn selenium basic in 30min";
             Assert.That(title.Text == value, "test failed");
         }

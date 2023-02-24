@@ -16,14 +16,14 @@ namespace CompetitionTask.Utilities
         [SetUp]
         public void Intialization()
         {
-            
-            
-           driver = new ChromeDriver();
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
+            driver = new ChromeDriver();
            SignIn singninObj = new SignIn();
            singninObj.SignInAction(driver);
             
         }
-        [TearDown]
+        //[TearDown]
         public void CloseRun()
         {
             driver.Quit();
