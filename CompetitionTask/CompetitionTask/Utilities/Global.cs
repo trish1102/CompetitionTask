@@ -12,12 +12,39 @@ global using ExcelDataReader;
 global using NUnit.Framework.Interfaces;
 global using System.IO;
 global using System.Text.Encodings;
+global using AventStack.ExtentReports;
 
 
 namespace CompetitionTask.Utilities
 {
       class Global
-    {
+      {
+        public static String screenshotPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\ScreenShot\";
+       
+
+        public class SaveScreenShotClass
+        {
+            public static string SaveScreenshot(IWebDriver driver, string ScreenShotFileName) // Definition
+            {
+                var folderLocation = (screenshotPath);
+
+                if (!System.IO.Directory.Exists(folderLocation))
+                {
+                    System.IO.Directory.CreateDirectory(folderLocation);
+                }
+
+                var screenShot = ((ITakesScreenshot)driver).GetScreenshot();
+                var fileName = new StringBuilder(folderLocation);
+
+                fileName.Append(ScreenShotFileName);
+                fileName.Append(DateTime.Now.ToString("_dd-mm-yyyy_mss"));
+                //fileName.Append(DateTime.Now.ToString("dd-mm-yyyym_ss"));
+                fileName.Append(".jpeg");
+                screenShot.SaveAsFile(fileName.ToString(), ScreenshotImageFormat.Png);
+                return fileName.ToString();
+            }
+        }
+        
         public class ExcelLib
         {
 

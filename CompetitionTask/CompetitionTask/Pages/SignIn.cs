@@ -6,9 +6,7 @@ namespace CompetitionTask.Pages
         public void SignInAction(IWebDriver driver)
     
         {
-           
-            //open browser
-            Thread.Sleep(1000);
+           //open browser
             //goto Url("http://localhost:5000")
             driver.Navigate().GoToUrl("http://localhost:5000");
             driver.Manage().Window.Maximize();

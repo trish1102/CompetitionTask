@@ -7,7 +7,7 @@ public class ManageListingTest : Commondriver
     ProfilePage profilepageObj = new ProfilePage();
     ManageListing managelistingObj = new ManageListing();
 
-    [Test]
+    [Test,Order(1)]
     public void ViewListing()
     {
         profilepageObj.ManageListing(driver);
@@ -16,7 +16,7 @@ public class ManageListingTest : Commondriver
        
         
     }
-    [Test]
+    [Test,Order(2)]
     public void UpdateListing()
     {
          profilepageObj.ManageListing(driver);
@@ -24,7 +24,7 @@ public class ManageListingTest : Commondriver
         managelistingObj.UpdateRecord(driver);
 
     }
-    [Test]
+    [Test,Order(3)]
     public void DeleteListing()
     {
         profilepageObj.ManageListing(driver);

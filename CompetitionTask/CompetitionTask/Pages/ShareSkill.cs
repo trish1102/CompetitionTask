@@ -15,19 +15,19 @@ namespace CompetitionTask.Pages
             //get categery dropbox and select categery
             IWebElement categeryDropbox = driver.FindElement(By.XPath("//option[ text()='Programming & Tech']"));
             categeryDropbox.Click();
-            Thread.Sleep(1000);
+            // Thread.Sleep(1000);
+            Wait.WaitForElementToBeClickable(driver,"XPath", "//option[ text()='QA']", 10);
             //get subcategery dropbox and select value
               IWebElement subcategeryDropbox = driver.FindElement(By.XPath("//option[ text()='QA']"));
              subcategeryDropbox.Click();
             //get tags texbox and send values
             IWebElement tagTextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div"));
             tagTextbox.Click();
-            Thread.Sleep(1000);
+            Wait.WaitForElementTobeExist(driver,"XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input", 10);
             IWebElement selecttagbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
             selecttagbox.SendKeys(Global.ExcelLib.ReadData(2, "Tags") + Keys.Enter);
-            Thread.Sleep(1000);
             
-            //select service type
+             //select service type
             IWebElement servicetypeButton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[5]/div[2]/div[1]/div[2]/div/input"));
             servicetypeButton.Click();
             //select location type
@@ -53,11 +53,9 @@ namespace CompetitionTask.Pages
             //select skill exchange
             IWebElement skillexchangeTextbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div"));
             skillexchangeTextbox.Click();
-            Thread.Sleep(1000);
-            IWebElement selectskillbox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
-            selectskillbox.SendKeys(Global.ExcelLib.ReadData(2, "Skill-Exchange") + Keys.Enter);
-            Thread.Sleep(1000);
-            //upload work sample
+            Wait.WaitForElementTobeExist(driver,"XPath", "//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input", 10);
+            IWebElement selectskillBox = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
+            selectskillBox.SendKeys(Global.ExcelLib.ReadData(2, "Skill-Exchange") + Keys.Enter);
             //select active status
             IWebElement activestatusButton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input"));
             activestatusButton.Click();
@@ -65,5 +63,7 @@ namespace CompetitionTask.Pages
             IWebElement saveButton = driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[11]/div/input[1]"));
             saveButton.Click();
         }
+       
+        
     }
 }
