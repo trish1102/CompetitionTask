@@ -23,6 +23,7 @@ namespace CompetitionTask.Utilities
         [OneTimeSetUp]
         public void Intialization()
         {
+            //extent report
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
            driver = new ChromeDriver();
             extent =new ExtentReports();
