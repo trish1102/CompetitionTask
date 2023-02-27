@@ -1,12 +1,4 @@
-﻿using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
+﻿
 namespace CompetitionTask.Pages
 {
     public class SignIn
@@ -14,7 +6,8 @@ namespace CompetitionTask.Pages
         public void SignInAction(IWebDriver driver)
     
         {
-           //open browser
+           
+            //open browser
             Thread.Sleep(1000);
             //goto Url("http://localhost:5000")
             driver.Navigate().GoToUrl("http://localhost:5000");
@@ -22,12 +15,12 @@ namespace CompetitionTask.Pages
             //click sign in button
             IWebElement signinButton = driver.FindElement(By.XPath("//a[text()='Sign In']"));
             signinButton.Click();
-
+            Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "SignIn");
             //Enter username and password
             IWebElement usernameTextbox = driver.FindElement(By.Name("email"));
-            usernameTextbox.SendKeys("truptisharma105@gmail.com");
+            usernameTextbox.SendKeys(Global.ExcelLib.ReadData(2,"Email"));
             IWebElement passwordTextbox = driver.FindElement(By.Name("password"));
-            passwordTextbox.SendKeys("Trisha@105");
+            passwordTextbox.SendKeys(Global.ExcelLib.ReadData(2, "Password"));
             // click on login button
             IWebElement loginButton = driver.FindElement(By.XPath("//button[text()='Login']"));
             loginButton.Click();
