@@ -1,4 +1,5 @@
 ﻿
+using AventStack.ExtentReports.Reporter;
 
 namespace CompetitionTask.Test
 {
@@ -8,12 +9,31 @@ namespace CompetitionTask.Test
 
         ProfilePage profilepageObj = new ProfilePage();
         ShareSkill skillObj = new ShareSkill();
-        [Test]
-        public void CreateListing()
+        ManageListing managelistingObj = new ManageListing();
+       
+      
+        
+        [Test,Order(1)]
+        public void CreateSkillListing()
         {
-            profilepageObj.ShareSkill(driver);
-            Thread.Sleep(1000);
-            skillObj.CreateSkill(driver);
+           
+            profilepageObj.ShareSkill();
+            Wait.TurnOnWait();
+            skillObj.CreateSkill();
+           
+        }
+        [Test,Order(2)]
+        public void UpdateSkillListing()
+        {
+            profilepageObj.ManageListing();
+            Wait.TurnOnWait();
+            managelistingObj.UpdateRecord();
+        }
+        [Test,Order(3)]
+        public void DeleteSkillListing()
+        {
+            profilepageObj.ManageListing();
+            managelistingObj.DeleteRecord();
         }
     }
 }
