@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Support.UI;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompetitionTask.Utilities
 {
-    public class Wait
+    public class Wait:Commondriver
     {
         public static void WaitForElementToBeClickable(IWebDriver driver, string locator, string locatorValue, int seconds)
         {
@@ -41,6 +42,12 @@ namespace CompetitionTask.Utilities
             {
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.CssSelector(locatorValue)));
             }
+        }
+        //Implicit Wait
+        public static void TurnOnWait()
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1500);
+
         }
 
 

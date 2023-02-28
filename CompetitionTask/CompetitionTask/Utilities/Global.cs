@@ -13,6 +13,10 @@ global using NUnit.Framework.Interfaces;
 global using System.IO;
 global using System.Text.Encodings;
 global using AventStack.ExtentReports;
+global using AventStack.ExtentReports.Reporter;
+global using static CompetitionTask.Utilities.Global;
+global using OpenQA.Selenium.Chrome;
+
 
 
 namespace CompetitionTask.Utilities
@@ -20,7 +24,7 @@ namespace CompetitionTask.Utilities
       class Global
       {
         public static String screenshotPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\ScreenShot\";
-       
+        
 
         public class SaveScreenShotClass
         {

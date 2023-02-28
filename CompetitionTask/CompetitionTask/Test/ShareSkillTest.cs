@@ -1,4 +1,6 @@
 ﻿
+using AventStack.ExtentReports.Reporter;
+
 namespace CompetitionTask.Test
 {
     [TestFixture]
@@ -8,28 +10,30 @@ namespace CompetitionTask.Test
         ProfilePage profilepageObj = new ProfilePage();
         ShareSkill skillObj = new ShareSkill();
         ManageListing managelistingObj = new ManageListing();
+       
+      
+        
         [Test,Order(1)]
         public void CreateSkillListing()
         {
-            
-            test=extent.CreateTest("CreateSkillListing").Info("Test Started");
-            profilepageObj.ShareSkill(driver);
-            Thread.Sleep(1000);
-            skillObj.CreateSkill(driver);
-            test.Log(Status.Pass, "Test Passed");
+           
+            profilepageObj.ShareSkill();
+            Wait.TurnOnWait();
+            skillObj.CreateSkill();
+           
         }
         [Test,Order(2)]
         public void UpdateSkillListing()
         {
-            profilepageObj.ManageListing(driver);
-            Thread.Sleep(1000);
-            managelistingObj.UpdateRecord(driver);
+            profilepageObj.ManageListing();
+            Wait.TurnOnWait();
+            managelistingObj.UpdateRecord();
         }
         [Test,Order(3)]
         public void DeleteSkillListing()
         {
-            profilepageObj.ManageListing(driver);
-            managelistingObj.DeleteRecord(driver);
+            profilepageObj.ManageListing();
+            managelistingObj.DeleteRecord();
         }
     }
 }
