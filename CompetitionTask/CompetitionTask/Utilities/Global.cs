@@ -16,27 +16,24 @@ global using AventStack.ExtentReports;
 global using AventStack.ExtentReports.Reporter;
 global using static CompetitionTask.Utilities.Global;
 global using OpenQA.Selenium.Chrome;
-
+global using DocumentFormat.OpenXml.Math;
 
 
 namespace CompetitionTask.Utilities
 {
       class Global
       {
-        public static String screenshotPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\ScreenShot\";
-        
-
         public class SaveScreenShotClass
         {
             public static string SaveScreenshot(IWebDriver driver, string ScreenShotFileName) // Definition
             {
-                var folderLocation = (screenshotPath);
+                var folderLocation = (@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\ScreenShot\");
 
                 if (!System.IO.Directory.Exists(folderLocation))
                 {
                     System.IO.Directory.CreateDirectory(folderLocation);
                 }
-
+                Thread.Sleep(1000);
                 var screenShot = ((ITakesScreenshot)driver).GetScreenshot();
                 var fileName = new StringBuilder(folderLocation);
 
@@ -48,7 +45,9 @@ namespace CompetitionTask.Utilities
                 return fileName.ToString();
             }
         }
-        
+
+
+
         public class ExcelLib
         {
 
@@ -114,7 +113,7 @@ namespace CompetitionTask.Utilities
 
                 catch (Exception e)
                 {
-                    //Added by Kumar
+                    
                     Console.WriteLine("Exception occurred in ExcelLib Class ReadData Method!" + Environment.NewLine + e.Message.ToString());
                     return null;
                 }

@@ -1,9 +1,17 @@
 ﻿
+
+
 namespace CompetitionTask.Pages
 {
     public class ShareSkill:Commondriver
     {
-      public  IWebElement titleTextbox => driver.FindElement(By.Name("title"));
+
+        
+
+        //public static string reportPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\" + DateTime.Now.ToString("_MMddyyyy_hhmmtt") + ".html";
+
+
+        public  IWebElement titleTextbox => driver.FindElement(By.Name("title"));
         public IWebElement descriptionTextbox => driver.FindElement(By.Name("description"));
         public IWebElement categeryDropbox => driver.FindElement(By.XPath("//option[ text()='Programming & Tech']"));
         public IWebElement subcategeryDropbox => driver.FindElement(By.XPath("//option[ text()='QA']"));
@@ -21,10 +29,13 @@ namespace CompetitionTask.Pages
         public IWebElement selectskillBox => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[8]/div[4]/div/div/div/div/div/input"));
         public IWebElement activestatusButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[10]/div[2]/div/div[1]/div/input"));
         public IWebElement saveButton => driver.FindElement(By.XPath("//*[@id=\"service-listing-section\"]/div[2]/div/form/div[11]/div/input[1]"));
+       
+       
         public void CreateSkill()
         {
+
            
-            test1 = extent.CreateTest("CreateSkillListing");
+            
             Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "ShareSkill");
             //get title textbox and send value
             titleTextbox.SendKeys(Global.ExcelLib.ReadData(2, "Title"));
@@ -62,9 +73,16 @@ namespace CompetitionTask.Pages
            activestatusButton.Click();
             //get save button and click to save data
             saveButton.Click();
-            test1.Log(Status.Info, "test passed");
+            
+            //extent.RemoveTest(test1);
+            // end test. (Reports)
+           
+
+            // calling Flush writes everything to the log file (Reports)
+
         }
-       
         
+
+
     }
 }

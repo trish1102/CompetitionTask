@@ -46,7 +46,7 @@ namespace CompetitionTask.Utilities
         //Implicit Wait
         public static void TurnOnWait()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1500);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2000);
 
         }
 
