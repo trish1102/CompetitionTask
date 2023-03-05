@@ -6,11 +6,6 @@ namespace CompetitionTask.Pages
     public class ShareSkill:Commondriver
     {
 
-        
-
-        //public static string reportPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\" + DateTime.Now.ToString("_MMddyyyy_hhmmtt") + ".html";
-
-
         public  IWebElement titleTextbox => driver.FindElement(By.Name("title"));
         public IWebElement descriptionTextbox => driver.FindElement(By.Name("description"));
         public IWebElement categeryDropbox => driver.FindElement(By.XPath("//option[ text()='Programming & Tech']"));
@@ -33,10 +28,7 @@ namespace CompetitionTask.Pages
        
         public void CreateSkill()
         {
-
-           
-            
-            Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "ShareSkill");
+             Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "ShareSkill");
             //get title textbox and send value
             titleTextbox.SendKeys(Global.ExcelLib.ReadData(2, "Title"));
             //get description textbox and send value
@@ -74,11 +66,7 @@ namespace CompetitionTask.Pages
             //get save button and click to save data
             saveButton.Click();
             
-            //extent.RemoveTest(test1);
-            // end test. (Reports)
-           
-
-            // calling Flush writes everything to the log file (Reports)
+            
 
         }
         

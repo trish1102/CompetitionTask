@@ -12,9 +12,8 @@ namespace CompetitionTask.Pages
         public void ShareSkill()
         {
             //click on Shareskill
-            
             Wait.TurnOnWait();
-             shareskillButton.Click();
+            shareskillButton.Click();
 
         }
         public void ManageListing()

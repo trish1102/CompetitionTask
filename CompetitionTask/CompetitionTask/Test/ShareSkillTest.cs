@@ -7,7 +7,6 @@ namespace CompetitionTask.Test
     public class ShareSkillTest:Commondriver
     {
         SignIn singninObj = new SignIn();
-        
         ProfilePage profilepageObj = new ProfilePage();
         ShareSkill skillObj = new ShareSkill();
         ManageListing managelistingObj = new ManageListing();
