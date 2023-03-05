@@ -1,6 +1,6 @@
 ﻿
 
-using DocumentFormat.OpenXml.Math;
+
 
 namespace CompetitionTask.Pages
 {
@@ -18,12 +18,14 @@ namespace CompetitionTask.Pages
         public IWebElement acceptButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/button[2]"));
         public void ViewRecord()
         {
+            Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "UpdateListing");
             viewButton.Click();
              
              Assert.That(title.Text == Global.ExcelLib.ReadData(2, "Title"), "test failed");
         }
         public void UpdateRecord()
         {
+            Global.ExcelLib.PopulateInCollection(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExcelData\ManageListing.xlsx", "UpdateListing");
             Wait.WaitForElementToBeClickable(driver,"XPath", "//*[@id=\"listing-management-section\"]/div[2]/div[1]/div[1]/table/tbody/tr[1]/td[8]/div/button[2]", 10);
             updateButton.Click();
             Wait.TurnOnWait();

@@ -3,6 +3,8 @@
 
 
 
+using DocumentFormat.OpenXml.Bibliography;
+
 namespace CompetitionTask.Utilities
 {
     public class Commondriver
@@ -10,39 +12,33 @@ namespace CompetitionTask.Utilities
         public static IWebDriver driver;
         public static ExtentReports extent;
         public static ExtentTest test1;
-
-        public static string reportPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\Test.html";
-        public static string reportXmlPath = @"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\Report.xml";
-        
-        [OneTimeSetUp]
-        public void Intialization()
+        [SetUp]
+        public void ExtentStart()
         {
             System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
             driver = new ChromeDriver();
-            //extent report
             extent = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(reportPath);
-            extent.AttachReporter(htmlReporter);
-            SignIn singninObj = new SignIn();
-           singninObj.SignInAction();
-            
+            var htmlreporter = new ExtentHtmlReporter(@"C:\CompetitionTask\CompetitionTask\CompetitionTask\CompetitionTask\ExtentReport\" + DateTime.Now.ToString("_MMddyyyy_hhmmtt") + ".html");
+            extent.AttachReporter(htmlreporter);
+
         }
+
+
+       
         [OneTimeTearDown]
-        public void CloseRun()
+        public void ExtentClose()
         {
+            Thread.Sleep(1000);
+            string png = SaveScreenShotClass.SaveScreenshot(driver, "Report");
+            test1.Log(Status.Info, "Snapshot below: " + test1.AddScreenCaptureFromPath(png));
 
-         
-            string img = SaveScreenShotClass.SaveScreenshot(driver, "Report");
-           test1.Log(Status.Info, "Snapshot below: " + test1.AddScreenCaptureFromPath(img));
-
-            // end test. (Reports)
-           // extent.RemoveTest(test1);
-
-            // calling Flush writes everything to the log file (Reports)
-          //  extent.Flush();
-
-            //Close the browser
+            extent.Flush();
+            driver.Close();
             driver.Quit();
         }
+        
+
+
+
     }
 }
