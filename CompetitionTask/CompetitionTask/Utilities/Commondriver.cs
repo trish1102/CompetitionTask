@@ -21,7 +21,7 @@ namespace CompetitionTask.Utilities
 
 
        
-        [OneTimeTearDown]
+        [TearDown]
         public void ExtentClose()
         {
             Thread.Sleep(1000);
