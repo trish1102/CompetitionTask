@@ -1,10 +1,6 @@
 ﻿
 
 
-
-
-using DocumentFormat.OpenXml.Bibliography;
-
 namespace CompetitionTask.Utilities
 {
     public class Commondriver
@@ -25,7 +21,7 @@ namespace CompetitionTask.Utilities
 
 
        
-        [OneTimeTearDown]
+        [TearDown]
         public void ExtentClose()
         {
             Thread.Sleep(1000);

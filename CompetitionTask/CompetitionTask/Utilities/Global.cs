@@ -17,6 +17,8 @@ global using AventStack.ExtentReports.Reporter;
 global using static CompetitionTask.Utilities.Global;
 global using OpenQA.Selenium.Chrome;
 global using DocumentFormat.OpenXml.Math;
+global using OpenQA.Selenium.Support.UI;
+global using DocumentFormat.OpenXml.Bibliography;
 
 
 namespace CompetitionTask.Utilities
